@@ -2,3 +2,6 @@ target/
 project/boot/
 .idea/
 .idea_modules/
+out
+.history
+

@@ -1,6 +1,8 @@
+import java.util.jar.Manifest
 import sbt._
 import Keys._
 import com.github.siasia.WebPlugin._
+import sbt.Package.ManifestAttributes
 
 object BaessieBuild extends Build {
   lazy val buildSettings = Seq(
@@ -21,7 +23,7 @@ object BaessieBuild extends Build {
     base = file("common"),
     settings = Defaults.defaultSettings ++ settings ++ Seq(
       libraryDependencies ++= Dependencies.simulator
-    )
+    ) ++ Seq(exportJars := true)
   )
 
   lazy val simulator = Project(
@@ -39,7 +41,7 @@ object BaessieBuild extends Build {
     dependencies = Seq(common),
     settings = Defaults.defaultSettings ++ settings ++ Seq(
       libraryDependencies ++= Dependencies.simulator
-    )
+    ) ++ Seq(exportJars := true) ++ Seq(packageOptions := Seq(ManifestAttributes(("Tapestry-Module-Classes", "org.baessie.ws.services.WsModule"))))
   )
 
   // Settings

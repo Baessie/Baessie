@@ -8,7 +8,6 @@ import org.baessie.common.TestDataManager
 import org.baessie.ws.services.WsModule
 import org.apache.tapestry5.ioc.annotations.SubModule
 
-@SubModule(Array(classOf[org.baessie.ws.services.WsModule]))
 object AppModule {
   def bind(binder: ServiceBinder) {
     binder.bind(classOf[TestDataManager], classOf[TestDataManagerImpl])
