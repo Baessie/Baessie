@@ -27,12 +27,10 @@ class WSRequestFilter extends ComponentRequestFilter {
   def handlePageRender(parameters: PageRenderRequestParameters, handler: ComponentRequestHandler) {
     if (request.getContentLength > 0 && "xml".r.findFirstIn(request.getContentType).isDefined) {
       val source: InputSource = new InputSource(request.getInputStream)
-      XMLUnit.setIgnoreWhitespace(true)
-      XMLUnit.setIgnoreDiffBetweenTextAndCDATA(true)
-      XMLUnit.setIgnoreAttributeOrder(true)
       val document = XMLUnit.buildControlDocument(source)
       val result = testDataManager.findMatching(new WSTestData("", document, null, null, null, 0, null))
       if (result.isDefined) {
+        result.get.incrementCallCount
         val out = response.getOutputStream("text/xml")
         val domSource: DOMSource = new DOMSource(result.get.asInstanceOf[WSTestData].outControlDocument);
         val streamResult: StreamResult = new StreamResult(out);

@@ -22,7 +22,7 @@ object BaessieBuild extends Build {
     id = "common",
     base = file("common"),
     settings = Defaults.defaultSettings ++ settings ++ Seq(
-      libraryDependencies ++= Dependencies.simulator
+      libraryDependencies ++= Dependencies.simulator ++ Dependencies.testkit
     ) ++ Seq(exportJars := true)
   )
 
@@ -31,7 +31,7 @@ object BaessieBuild extends Build {
     base = file("simulator"),
     dependencies = Seq(common, wsconnector),
     settings = Defaults.defaultSettings ++ settings ++ webSettings ++ Seq(
-      libraryDependencies ++= Dependencies.simulator ++ Dependencies.jetty
+      libraryDependencies ++= Dependencies.simulator ++ Dependencies.jetty ++ Dependencies.testkit
     )
   )
 
@@ -40,7 +40,7 @@ object BaessieBuild extends Build {
     base = file("wsconnector"),
     dependencies = Seq(common),
     settings = Defaults.defaultSettings ++ settings ++ Seq(
-      libraryDependencies ++= Dependencies.simulator
+      libraryDependencies ++= Dependencies.simulator ++ Dependencies.testkit
     ) ++ Seq(exportJars := true) ++ Seq(packageOptions := Seq(ManifestAttributes(("Tapestry-Module-Classes", "org.baessie.ws.services.WsModule"))))
   )
 
