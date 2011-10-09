@@ -9,7 +9,9 @@
 
     <logger name="org.apache.tapestry5" level="INFO" />
 
-    <root level="debug">
+    <logger name="org.baessie" level="DEBUG" />
+    
+    <root level="info">
         <appender-ref ref="STDOUT" />
     </root>
 </configuration>

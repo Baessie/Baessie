@@ -13,4 +13,10 @@ class TestDataManagerImpl extends TestDataManager {
   def findMatching(testData: TestData): Option[TestData] = {
     return data find (_ matches testData)
   }
+
+  def clear() = {
+    val count = data.size
+    data.clear()
+    count
+  }
 }

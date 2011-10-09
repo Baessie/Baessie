@@ -32,7 +32,6 @@ class Setup {
   private var scanBackReferences: Boolean = false
 
   def onActivate() = {
-    logger.debug("---> onActivate")
     val inControlDocument = XMLUnit.buildControlDocument(request)
     val outControlDocument = XMLUnit.buildControlDocument(response)
 

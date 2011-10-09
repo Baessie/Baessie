@@ -55,6 +55,20 @@ object BaessieBuild extends Build {
               <exclude module="log4j"/>
               <exclude module="slf4j-log4j12"/>
             </dependency>
+            <dependency org="org.apache.tapestry" name="tapestry-test" rev="5.2.6">
+              <exclude module="testng"/>
+              <exclude module="selenium-server"/>
+              <exclude module="jetty-jndi"/>
+              <exclude module="jetty-plus"/>
+              <exclude module="jetty-webapp"/>
+              <exclude module="jetty-xml"/>
+              <exclude module="jetty-continuation"/>
+              <exclude module="jetty-http"/>
+              <exclude module="jetty-io"/>
+              <exclude module="jetty-server"/>
+              <exclude module="jetty-util"/>
+              <exclude module="org.mortbay.jetty"/>
+            </dependency>
           </dependencies>
 
   lazy val baseSettings = Defaults.defaultSettings ++ Publish.settings
@@ -83,7 +97,7 @@ object Dependencies {
 
   import Dependency._
 
-  val testkit = Seq(Test.scalatest)
+  val testkit = Seq(Test.scalatest, Test.tapestry, Test.jetty, Test.jettyWebapp)
 
   val simulator = Seq(tapestryCore, xmlUnit, slf4jApi, jettyServlet, Runtime.logback)
 
@@ -91,8 +105,6 @@ object Dependencies {
 }
 
 object Dependency {
-
-  // Versions
 
   object V {
     val Jetty = "7.4.0.v20110414"
@@ -102,32 +114,22 @@ object Dependency {
     val Tapestry = "5.2.6"
   }
 
-  // Compile
-
   val jettyUtil = "org.eclipse.jetty" % "jetty-util" % V.Jetty // Eclipse license
   val jettyXml = "org.eclipse.jetty" % "jetty-xml" % V.Jetty // Eclipse license
   val jettyServlet = "org.eclipse.jetty" % "jetty-servlet" % V.Jetty // Eclipse license
   val jsr250 = "javax.annotation" % "jsr250-api" % "1.0" // CDDL v1
   val slf4jApi = "org.slf4j" % "slf4j-api" % V.Slf4j // MIT
-  val tapestryCore = "org.apache.tapestry" % "tapestry-core" % V.Tapestry
-  val xmlUnit = "xmlunit" % "xmlunit" % "1.3"
-
-  // ApacheV2
-
-  // Provided
+  val tapestryCore = "org.apache.tapestry" % "tapestry-core" % V.Tapestry // ApacheV2
+  val xmlUnit = "xmlunit" % "xmlunit" % "1.3" // BSD
 
   object Provided {
     val javaxServlet = "org.apache.geronimo.specs" % "geronimo-servlet_3.0_spec" % "1.0" % "provided" //CDDL v1
     val jetty = "org.eclipse.jetty" % "jetty-server" % V.Jetty % "provided" // Eclipse license
   }
 
-  // Runtime
-
   object Runtime {
     val logback = "ch.qos.logback" % "logback-classic" % V.Logback % "runtime" // MIT
   }
-
-  // Test
 
   object Test {
     val jetty = "org.eclipse.jetty" % "jetty-server" % V.Jetty % "test" // Eclipse license
@@ -137,5 +139,6 @@ object Dependency {
     val logback = "ch.qos.logback" % "logback-classic" % V.Logback % "test" // EPL 1.0 / LGPL 2.1
     val scalatest = "org.scalatest" % "scalatest_2.9.1" % V.Scalatest % "test" // ApacheV2
     val scalacheck = "org.scala-tools.testing" % "scalacheck_2.9.1" % "1.9" % "test" // New BSD
+    val tapestry = "org.apache.tapestry" % "tapestry-test" % V.Tapestry % "test" // ApacheV2
   }
 }
