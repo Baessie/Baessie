@@ -6,4 +6,6 @@ trait TestDataManager {
   def add(testData: TestData)
 
   def clear() : Int
+
+  def getCallCountForTestId(testId: String): Int
 }

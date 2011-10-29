@@ -9,8 +9,7 @@ import org.baessie.ws.WSTestData
 import javax.xml.transform.dom.DOMSource
 import javax.xml.transform.stream.StreamResult
 import javax.xml.transform.TransformerFactory
-import org.slf4j.Logger
-import org.baessie.common.{TestDataManager, TestData}
+import org.baessie.common.TestDataManager
 
 class WSRequestFilter extends ComponentRequestFilter {
   @Inject

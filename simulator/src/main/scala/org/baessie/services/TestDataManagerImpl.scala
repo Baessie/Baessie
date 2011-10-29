@@ -19,4 +19,9 @@ class TestDataManagerImpl extends TestDataManager {
     data.clear()
     count
   }
+
+  def getCallCountForTestId(testId: String) = {
+    val testData = data find (_.testId == testId)
+    if (testData.isDefined) testData.get.callCount else 0
+  }
 }
