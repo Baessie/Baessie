@@ -31,8 +31,8 @@ class WSRequestFilter extends ComponentRequestFilter {
       if (result.isDefined) {
         result.get.incrementCallCount
         val out = response.getOutputStream("text/xml")
-        val domSource: DOMSource = new DOMSource(result.get.asInstanceOf[WSTestData].outControlDocument);
-        val streamResult: StreamResult = new StreamResult(out);
+        val domSource = new DOMSource(result.get.asInstanceOf[WSTestData].outControlDocument);
+        val streamResult = new StreamResult(out);
         TransformerFactory.newInstance().newTransformer().transform(domSource, streamResult);
         out.flush();
       }

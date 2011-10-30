@@ -11,7 +11,9 @@ class TestDataManagerImpl extends TestDataManager {
   }
 
   def findMatching(testData: TestData): Option[TestData] = {
-    return data find (_ matches testData)
+    val matchingTestData = data find (_ matches testData)
+    val result = if (matchingTestData.isDefined) matchingTestData.get.handleBackReferences(testData) else matchingTestData
+    return result
   }
 
   def clear() = {
@@ -24,4 +26,6 @@ class TestDataManagerImpl extends TestDataManager {
     val testData = data find (_.testId == testId)
     if (testData.isDefined) testData.get.callCount else 0
   }
+
+  def getTestDataCount = data.size
 }

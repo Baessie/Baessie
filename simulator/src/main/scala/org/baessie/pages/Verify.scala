@@ -19,7 +19,7 @@ class Verify {
     currentCallcount = testDataManager.getCallCountForTestId(testId)
   }
 
-  def callcount = {
+  def getCallcount() = {
     currentCallcount
   }
 }

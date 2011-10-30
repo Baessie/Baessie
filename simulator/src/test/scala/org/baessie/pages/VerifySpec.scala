@@ -24,7 +24,7 @@ class VerifySpec extends Spec with ShouldMatchers {
 
       page.onActivate()
 
-      page.callcount should be(2)
+      page.getCallcount should be(2)
     }
   }
 }
