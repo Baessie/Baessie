@@ -1,16 +1,15 @@
 package org.baessie.services
 
-import org.scalatest.Spec
 import org.scalatest.matchers.ShouldMatchers
 import org.baessie.common.TestData
+import org.scalatest.{OneInstancePerTest, Spec}
 
 
-class TestDataManagerImplSpec extends Spec with ShouldMatchers {
+class TestDataManagerImplSpec extends Spec with ShouldMatchers with OneInstancePerTest {
   val manager = new TestDataManagerImpl
 
   describe("TestDataManagerImpl") {
     it("should be possible to add test data") {
-      manager.clear()
       manager.getTestDataCount should be(0)
       val testData = new TestDataMock
       manager add testData
@@ -18,7 +17,6 @@ class TestDataManagerImplSpec extends Spec with ShouldMatchers {
     }
 
     it("should return matching test data") {
-      manager.clear()
       val testData = new TestDataMock
       manager add testData
 
@@ -26,7 +24,6 @@ class TestDataManagerImplSpec extends Spec with ShouldMatchers {
     }
 
     it("should ask test data to handle back references between actual request and found response") {
-      manager.clear()
       val testData = new TestDataMock
       manager add testData
 
