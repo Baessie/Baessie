@@ -1,31 +1,31 @@
 package org.baessie.services
 
-import collection.mutable.ListBuffer
 import org.baessie.common.{TestDataManager, TestData}
 
 class TestDataManagerImpl extends TestDataManager {
-  private val data: ListBuffer[TestData] = ListBuffer()
+  private var data: List[TestData] = List()
 
-  def add(testData: TestData) = {
-    data += testData
+  def add(testData: TestData) {
+    data = testData :: data
   }
 
   def findMatching(testData: TestData): Option[TestData] = {
     val matchingTestData = data find (_ matches testData)
-    val result = if (matchingTestData.isDefined) matchingTestData.get.handleBackReferences(testData) else matchingTestData
-    return result
+    return if (matchingTestData.isDefined) matchingTestData.get.handleBackReferences(testData) else matchingTestData
   }
 
-  def clear() = {
+  def clear(): Int = {
     val count = data.size
-    data.clear()
-    count
+    data = Nil
+    return count
   }
 
-  def getCallCountForTestId(testId: String) = {
+  def getCallCountForTestId(testId: String): Int = {
     val testData = data find (_.testId == testId)
-    if (testData.isDefined) testData.get.callCount else 0
+    return if (testData.isDefined) testData.get.callCount else 0
   }
 
   def getTestDataCount = data.size
+
+  def getAllTestData: List[TestData] = data
 }

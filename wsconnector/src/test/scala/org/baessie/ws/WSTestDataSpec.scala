@@ -8,8 +8,10 @@ import javax.xml.transform.dom.DOMSource
 import javax.xml.transform.TransformerFactory
 import java.io.ByteArrayOutputStream
 import javax.xml.transform.stream.StreamResult
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
 
-
+@RunWith(classOf[JUnitRunner])
 class WSTestDataSpec extends Spec with ShouldMatchers {
   type ? = this.type
 

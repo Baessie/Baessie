@@ -20,6 +20,7 @@ class WSTestData(
                   val responseHeaders: Map[String, String]) extends TestData {
   var callCount: Int = _
   val backReferenceRegexp = "\\*\\(([[a-zA-Z0-9_-]\\s]*)\\)\\*".r
+  val expression = XPathFactory.newInstance().newXPath().compile("//*")
 
   XMLUnit.setIgnoreWhitespace(true)
   XMLUnit.setIgnoreComments(true)
@@ -42,12 +43,12 @@ class WSTestData(
     val differences = new ArrayList[Difference](detailedDiff.getAllDifferences.asInstanceOf[List[Difference]]).asScala
     val backReferenceDiffs = differences filter isBackReference _
     val backReferenceMap = backReferenceDiffs.map(diff => (diff.getControlNodeDetail.getValue, diff.getTestNodeDetail.getValue)).toMap
-    val expression = XPathFactory.newInstance().newXPath().compile("//*")
     val result = copyDocument(this.outControlDocument)
     val nodes = expression.evaluate(result, XPathConstants.NODESET).asInstanceOf[NodeList]
     0 to nodes.getLength - 1 foreach (index => {
-      if (backReferenceRegexp findFirstIn nodes.item(index).getTextContent isDefined) {
-        nodes.item(index).setTextContent(backReferenceMap(nodes.item(index).getTextContent))
+      val nodeItem = nodes.item(index)
+      if (backReferenceRegexp findFirstIn nodeItem.getTextContent isDefined) {
+        nodeItem.setTextContent(backReferenceMap(nodeItem.getTextContent))
       }
     })
 
@@ -70,34 +71,27 @@ class WSTestData(
 
   private def hasAcceptableDifferences(diff: Diff): Boolean = {
     val detailedDiff = new DetailedDiff(diff)
-    var acceptable = true
 
     val differences = new ArrayList[Difference](detailedDiff.getAllDifferences.asInstanceOf[List[Difference]]).asScala
 
     differences foreach (diff => {
-      if (diff.isRecoverable()) {
-      } else if (isWildcard(diff)) {
-      } else if (isBackReference(diff)) {
-      } else {
-        acceptable = false
+      if (!diff.isRecoverable() && !isWildcard(diff) && !isBackReference(diff)) {
+        return false
       }
     })
 
-    acceptable
+    return true
   }
 
   private def isBackReference(diff: Difference): Boolean = {
-    return backReferenceRegexp findFirstIn diff.getControlNodeDetail.getValue isDefined
+    val diffValue = diff.getControlNodeDetail.getValue
+    return backReferenceRegexp findFirstIn diffValue isDefined
   }
 
   private def isWildcard(diff: Difference): Boolean = {
     val controlValue = diff.getControlNodeDetail.getValue.replaceAll("\\*", ".*?")
     val firstMatch = controlValue.r findFirstIn diff.getTestNodeDetail.getValue
-    if (firstMatch.isDefined) {
-      true
-    } else {
-      false
-    }
+    return firstMatch.isDefined
   }
 
   private def canEqual(other: Any): Boolean = other.isInstanceOf[WSTestData]
@@ -106,6 +100,6 @@ class WSTestData(
     val source = new DOMSource(document)
     val result = new DOMResult()
     TransformerFactory.newInstance().newTransformer().transform(source, result)
-    result.getNode().asInstanceOf[Document]
+    return result.getNode().asInstanceOf[Document]
   }
 }

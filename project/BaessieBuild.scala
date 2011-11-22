@@ -102,7 +102,7 @@ object Dependencies {
 
   import Dependency._
 
-  val testkit = Seq(Test.scalatest, Test.tapestry, Test.jetty, Test.jettyWebapp)
+  val testkit = Seq(Test.scalatest, Test.junit, Test.tapestry, Test.jetty, Test.jettyWebapp)
 
   val simulator = Seq(tapestryCore, xmlUnit, slf4jApi, jettyServlet, Runtime.logback)
 

@@ -15,10 +15,12 @@ class ClearSpec extends PageTester("org.baessie", "app", "src/main/webapp", clas
   describe("Clear-page") {
     it("should clear the test data manager when onActivate is called") {
       manager.add(new WSTestData("test", XMLUnit.buildControlDocument("<hello>content</hello>"), null, null, null, 0, null))
+      manager.getAllTestData.size should be(1)
 
       val page = renderPage("clear")
 
-      page.toString should equal ("<result>Testdata cleared: number of entries removed=1</result>")
+      page.toString should equal("<result>Testdata cleared: number of entries removed=1</result>")
+      manager.getAllTestData.size should be(0)
     }
   }
 }

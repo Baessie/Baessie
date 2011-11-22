@@ -4,4 +4,8 @@ project/boot/
 .idea_modules/
 out
 .history
-
+.project
+.classpath
+.cache
+.settings
+.target
