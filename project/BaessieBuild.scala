@@ -99,6 +99,12 @@ object BaessieBuild extends Build {
             <email>joacim.turesson@autenta.se</email>
             <url>https://github.com/jotu</url>
           </developer>
+          <developer>
+            <id>pliljenberg</id>
+            <name>Peter Liljenberg</name>
+            <email>pliljenberg@gmail.com</email>
+            <url>https://github.com/pliljenberg</url>
+          </developer>
         </developers>
       )
     }
