@@ -80,32 +80,32 @@ object BaessieBuild extends Build {
           <url>http://github.com/Baessie/Baessie</url>
           <connection>scm:git:git://github.com/Baessie/Baessie.git</connection>
         </scm>
-        <inceptionYear>2011</inceptionYear>
-        <url>http://baessie.org</url>
-        <organization>
-          <name>Baessie</name>
+          <inceptionYear>2011</inceptionYear>
           <url>http://baessie.org</url>
-        </organization>
-        <developers>
-          <developer>
-            <id>argoyle</id>
-            <name>Joakim Olsson</name>
-            <email>joakim@unbound.se</email>
-            <url>https://github.com/argoyle</url>
-          </developer>
-          <developer>
-            <id>jotu</id>
-            <name>Joacim Turesson</name>
-            <email>joacim.turesson@autenta.se</email>
-            <url>https://github.com/jotu</url>
-          </developer>
-          <developer>
-            <id>pliljenberg</id>
-            <name>Peter Liljenberg</name>
-            <email>pliljenberg@gmail.com</email>
-            <url>https://github.com/pliljenberg</url>
-          </developer>
-        </developers>
+          <organization>
+            <name>Baessie</name>
+            <url>http://baessie.org</url>
+          </organization>
+          <developers>
+            <developer>
+              <id>argoyle</id>
+              <name>Joakim Olsson</name>
+              <email>joakim@unbound.se</email>
+              <url>https://github.com/argoyle</url>
+            </developer>
+            <developer>
+              <id>jotu</id>
+              <name>Joacim Turesson</name>
+              <email>joacim.turesson@autenta.se</email>
+              <url>https://github.com/jotu</url>
+            </developer>
+            <developer>
+              <id>pliljenberg</id>
+              <name>Peter Liljenberg</name>
+              <email>pliljenberg@gmail.com</email>
+              <url>https://github.com/pliljenberg</url>
+            </developer>
+          </developers>
       )
     }
   )
@@ -181,39 +181,39 @@ object Dependencies {
 object Dependency {
 
   object V {
-    val Jetty = "7.4.0.v20110414"
-    val Logback = "0.9.28"
-    val Scalatest = "1.6.1"
-    val Slf4j = "1.6.0"
-    val Tapestry = "5.2.6"
+    val Jetty         = "7.4.0.v20110414"
+    val Logback       = "0.9.28"
+    val Scalatest     = "1.6.1"
+    val Slf4j         = "1.6.0"
+    val Tapestry      = "5.2.6"
   }
 
-  val jettyUtil = "org.eclipse.jetty" % "jetty-util" % V.Jetty
-  val jettyXml = "org.eclipse.jetty" % "jetty-xml" % V.Jetty
-  val jettyServlet = "org.eclipse.jetty" % "jetty-servlet" % V.Jetty
-  val jsr250 = "javax.annotation" % "jsr250-api" % "1.0"
-  val slf4jApi = "org.slf4j" % "slf4j-api" % V.Slf4j
-  val tapestryCore = "org.apache.tapestry" % "tapestry-core" % V.Tapestry
-  val xmlUnit = "xmlunit" % "xmlunit" % "1.3"
+  val jettyUtil       = "org.eclipse.jetty"             % "jetty-util"                    % V.Jetty
+  val jettyXml        = "org.eclipse.jetty"             % "jetty-xml"                     % V.Jetty
+  val jettyServlet    = "org.eclipse.jetty"             % "jetty-servlet"                 % V.Jetty
+  val jsr250          = "javax.annotation"              % "jsr250-api"                    % "1.0"
+  val slf4jApi        = "org.slf4j"                     % "slf4j-api"                     % V.Slf4j
+  val tapestryCore    = "org.apache.tapestry"           % "tapestry-core"                 % V.Tapestry
+  val xmlUnit         = "xmlunit"                       % "xmlunit"                       % "1.3"
 
   object Provided {
-    val javaxServlet = "org.apache.geronimo.specs" % "geronimo-servlet_3.0_spec" % "1.0" % "provided"
-    val jetty = "org.eclipse.jetty" % "jetty-server" % V.Jetty % "provided"
+    val javaxServlet  = "org.apache.geronimo.specs"     % "geronimo-servlet_3.0_spec"     % "1.0"         % "provided"
+    val jetty         = "org.eclipse.jetty"             % "jetty-server"                  % V.Jetty       % "provided"
   }
 
   object Runtime {
-    val logback = "ch.qos.logback" % "logback-classic" % V.Logback % "runtime"
+    val logback       = "ch.qos.logback"                % "logback-classic"               % V.Logback     % "runtime"
   }
 
   object Test {
-    val jetty = "org.eclipse.jetty" % "jetty-server" % V.Jetty % "test"
-    val jettyWebapp = "org.eclipse.jetty" % "jetty-webapp" % V.Jetty % "test"
-    val jettyRun = "org.eclipse.jetty" % "jetty-webapp" % V.Jetty % "container"
-    val junit = "junit" % "junit" % "4.8" % "test"
-    val logback = "ch.qos.logback" % "logback-classic" % V.Logback % "test"
-    val scalatest = "org.scalatest" % "scalatest_2.9.1" % V.Scalatest % "test"
-    val scalacheck = "org.scala-tools.testing" % "scalacheck_2.9.1" % "1.9" % "test"
-    val tapestry = "org.apache.tapestry" % "tapestry-test" % V.Tapestry % "test"
+    val jetty         = "org.eclipse.jetty"             % "jetty-server"                  % V.Jetty       % "test"
+    val jettyWebapp   = "org.eclipse.jetty"             % "jetty-webapp"                  % V.Jetty       % "test"
+    val jettyRun      = "org.eclipse.jetty"             % "jetty-webapp"                  % V.Jetty       % "container"
+    val junit         = "junit"                         % "junit"                         % "4.8"         % "test"
+    val logback       = "ch.qos.logback"                % "logback-classic"               % V.Logback     % "test"
+    val scalatest     = "org.scalatest"                 % "scalatest_2.9.1"               % V.Scalatest   % "test"
+    val scalacheck    = "org.scala-tools.testing"       % "scalacheck_2.9.1"              % "1.9"         % "test"
+    val tapestry      = "org.apache.tapestry"           % "tapestry-test"                 % V.Tapestry    % "test"
   }
 
 }
