@@ -144,6 +144,7 @@ object BaessieBuild extends Build {
   lazy val baessieSettings = Defaults.defaultSettings ++ Seq(
     publishSetting,
     issue257Hack,
+    crossPaths := false,
     credentials += Credentials(Path.userHome / ".ivy2" / ".credentials")
   ) ++ mavenCentral
 
