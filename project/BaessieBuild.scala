@@ -10,7 +10,7 @@ object BaessieBuild extends Build {
 
   lazy val buildSettings = Seq(
     organization := "org.baessie",
-    version := "0.1-SNAPSHOT",
+    version := "0.1",
     scalaVersion := "2.9.1"
   )
 
