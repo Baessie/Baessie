@@ -10,7 +10,7 @@ object BaessieBuild extends Build {
 
   lazy val buildSettings = Seq(
     organization := "org.baessie",
-    version := "0.1-SNAPSHOT",
+    version := "0.2-SNAPSHOT",
     scalaVersion := "2.9.1"
   )
 
@@ -71,7 +71,8 @@ object BaessieBuild extends Build {
   }
 
   lazy val mavenCentral = Seq(
-    homepage := Some(new URL("http://github.com/Baessie")),
+    organizationName := "Baessie",
+    homepage := Some(new URL("http://baessie.org")),
     startYear := Some(2011),
     licenses := Seq(("Simplified BSD License", new URL("http://github.com/Baessie/Baessie/raw/HEAD/LICENSE.txt"))),
     pomExtra <<= (pomExtra, name, description) {
@@ -80,12 +81,6 @@ object BaessieBuild extends Build {
           <url>http://github.com/Baessie/Baessie</url>
           <connection>scm:git:git://github.com/Baessie/Baessie.git</connection>
         </scm>
-          <inceptionYear>2011</inceptionYear>
-          <url>http://baessie.org</url>
-          <organization>
-            <name>Baessie</name>
-            <url>http://baessie.org</url>
-          </organization>
           <developers>
             <developer>
               <id>argoyle</id>
