@@ -6,8 +6,10 @@ import org.baessie.ws.WSTestData
 import org.custommonkey.xmlunit.XMLUnit
 import org.baessie.services.TestDataManagerImpl
 import org.baessie.testtools.PageTestTool
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
 
-
+@RunWith(classOf[JUnitRunner])
 class VerifySpec extends Spec with ShouldMatchers {
   describe("Verify-page") {
     it("should return the current call count for the provided request when onActivate is called") {

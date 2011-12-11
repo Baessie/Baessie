@@ -8,7 +8,10 @@ import org.custommonkey.xmlunit.XMLUnit
 import org.scalatest.matchers.ShouldMatchers
 import org.baessie.services.TestModule
 import org.baessie.ws.services.WsModule
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
 
+@RunWith(classOf[JUnitRunner])
 class ClearSpec extends PageTester("org.baessie", "app", "src/main/webapp", classOf[TestModule], classOf[WsModule]) with Spec with ShouldMatchers {
   val manager = getService(classOf[TestDataManager])
 

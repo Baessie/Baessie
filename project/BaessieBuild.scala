@@ -18,7 +18,7 @@ object BaessieBuild extends Build {
     id = "baessie",
     base = file("."),
     settings = parentSettings,
-    aggregate = Seq(common, wsconnector, simulator, testtools)
+    aggregate = Seq(common, wsconnector, socketconnector, simulator, testtools)
   )
 
   lazy val testtools = Project(
@@ -43,7 +43,7 @@ object BaessieBuild extends Build {
     settings = Defaults.defaultSettings ++ defaultSettings ++ settings ++ webSettings ++ Seq(
       libraryDependencies ++= Dependencies.simulator ++ Dependencies.jetty ++ Dependencies.testkit
     )
-  ) dependsOn(common, wsconnector, testtools % "test")
+  ) dependsOn(common, wsconnector, socketconnector, testtools % "test")
 
   lazy val wsconnector = Project(
     id = "wsconnector",
@@ -51,6 +51,14 @@ object BaessieBuild extends Build {
     settings = Defaults.defaultSettings ++ defaultSettings ++ settings ++ Seq(
       libraryDependencies ++= Dependencies.simulator ++ Dependencies.testkit
     ) ++ Seq(exportJars := true) ++ Seq(packageOptions := Seq(ManifestAttributes(("Tapestry-Module-Classes", "org.baessie.ws.services.WsModule"))))
+  ) dependsOn(common, testtools % "test")
+
+  lazy val socketconnector = Project(
+    id = "socketconnector",
+    base = file("socketconnector"),
+    settings = Defaults.defaultSettings ++ defaultSettings ++ settings ++ Seq(
+      libraryDependencies ++= Dependencies.simulator ++ Dependencies.testkit
+    ) ++ Seq(exportJars := true) ++ Seq(packageOptions := Seq(ManifestAttributes(("Tapestry-Module-Classes", "org.baessie.socket.services.SocketModule"))))
   ) dependsOn(common, testtools % "test")
 
   // Settings

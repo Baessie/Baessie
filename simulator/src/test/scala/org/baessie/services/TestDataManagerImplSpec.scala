@@ -3,8 +3,10 @@ package org.baessie.services
 import org.scalatest.matchers.ShouldMatchers
 import org.baessie.common.TestData
 import org.scalatest.{OneInstancePerTest, Spec}
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
 
-
+@RunWith(classOf[JUnitRunner])
 class TestDataManagerImplSpec extends Spec with ShouldMatchers with OneInstancePerTest {
   val manager = new TestDataManagerImpl
 
@@ -36,7 +38,7 @@ class TestDataManagerImplSpec extends Spec with ShouldMatchers with OneInstanceP
 }
 
 private class TestDataMock extends TestData {
-  val testId = "test"
+  val testId                     = "test"
   var handleBackReferencesCalled = false
 
   def matches(other: TestData) = true

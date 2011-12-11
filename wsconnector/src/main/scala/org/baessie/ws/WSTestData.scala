@@ -18,7 +18,7 @@ class WSTestData(
                   val outBackReferences: List[BackReferenceLocation],
                   val delay: Int,
                   val responseHeaders: Map[String, String]) extends TestData {
-  var callCount: Int = _
+  var callCount: Int = 0
   val backReferenceRegexp = "\\*\\(([[a-zA-Z0-9_-]\\s]*)\\)\\*".r
   val expression = XPathFactory.newInstance().newXPath().compile("//*")
 
