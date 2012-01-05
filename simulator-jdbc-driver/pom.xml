@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.baessie</groupId>
+	<artifactId>simulator-jdbc-driver</artifactId>
+	<version>0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
+	<name>Baessie Simulator JDBC Driver</name>
+
+	<organization>
+		<name>Baessie</name>
+		<url>http://github.com/Baessie</url>
+	</organization>
+	<inceptionYear>2011</inceptionYear>
+	<licenses>
+		<license>
+			<name>Simplified BSD License</name>
+			<url>http://github.com/Baessie/Baessie/raw/HEAD/LICENSE.txt</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+	<developers>
+		<developer>
+			<id>argoyle</id>
+			<name>Joakim Olsson</name>
+			<email>joakim@unbound.se</email>
+			<url>https://github.com/argoyle</url>
+		</developer>
+		<developer>
+			<id>jotu</id>
+			<name>Joacim Turesson</name>
+			<email>joacim.turesson@autenta.se</email>
+			<url>https://github.com/jotu</url>
+		</developer>
+		<developer>
+			<id>pliljenberg</id>
+			<name>Peter Liljenberg</name>
+			<email>pliljenberg@gmail.com</email>
+			<url>https://github.com/pliljenberg</url>
+		</developer>
+	</developers>
+
+	<scm>
+		<connection>scm:git:git://github.com/Baessie/Baessie.git</connection>
+		<url>http://github.com/Baessie/Baessie</url>
+	</scm>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+					<showWarnings>true</showWarnings>
+					<showDeprecation>true</showDeprecation>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.8.2</version>
+			<type>jar</type>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-api</artifactId>
+			<version>6.0</version>
+			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>2.5</version>
+			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.6.1</version>
+		</dependency>
+	</dependencies>
+
+</project>
