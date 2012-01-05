@@ -18,7 +18,7 @@ object BaessieBuild extends Build {
     id = "baessie",
     base = file("."),
     settings = parentSettings,
-    aggregate = Seq(common, wsconnector, socketconnector, simulator, testtools)
+    aggregate = Seq(common, wsconnector, socketconnector, simulator, jdbcdrivers, testtools)
   )
 
   lazy val testtools = Project(
@@ -60,6 +60,14 @@ object BaessieBuild extends Build {
       libraryDependencies ++= Dependencies.simulator ++ Dependencies.testkit
     ) ++ Seq(exportJars := true) ++ Seq(packageOptions := Seq(ManifestAttributes(("Tapestry-Module-Classes", "org.baessie.socket.services.SocketModule"))))
   ) dependsOn(common, testtools % "test")
+
+  lazy val jdbcdrivers = Project(
+    id = "jdbcdrivers",
+    base = file("simulator-jdbc-driver"),
+    settings = Defaults.defaultSettings ++ defaultSettings ++ settings ++ Seq(
+      libraryDependencies ++= Dependencies.testkit ++ Seq(Dependency.commonsLang)
+    ) ++ Seq(exportJars := true)
+  )
 
   // Settings
 
@@ -199,6 +207,7 @@ object Dependency {
   val slf4jApi        = "org.slf4j"                     % "slf4j-api"                     % V.Slf4j
   val tapestryCore    = "org.apache.tapestry"           % "tapestry-core"                 % V.Tapestry
   val xmlUnit         = "xmlunit"                       % "xmlunit"                       % "1.3"
+  val commonsLang     = "commons-lang"                  % "commons-lang"                  % "2.6"
 
   object Provided {
     val javaxServlet  = "org.apache.geronimo.specs"     % "geronimo-servlet_3.0_spec"     % "1.0"         % "provided"
