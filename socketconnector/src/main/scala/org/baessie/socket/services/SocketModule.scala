@@ -6,6 +6,7 @@ import org.baessie.common.TestDataManager
 import org.slf4j.Logger
 import org.apache.tapestry5.ioc.annotations.EagerLoad
 import org.baessie.socket.{SocketDispatcherImpl, SocketSimulator}
+import org.apache.tapestry5.ioc.services.RegistryShutdownHub
 
 class SocketModule {}
 
@@ -15,9 +16,11 @@ object SocketModule {
   }
 
   @EagerLoad
-  def buildSocketSimulator(testDataManager: TestDataManager, logger: Logger): SocketSimulator = {
+  def buildSocketSimulator(testDataManager: TestDataManager, logger: Logger, shutdownHub: RegistryShutdownHub): SocketSimulator = {
     val dispatcher = new SocketDispatcherImpl(testDataManager, logger)
     dispatcher.start()
-    return new SocketSimulator(dispatcher)
+    val socketSimulator = new SocketSimulator(dispatcher)
+    shutdownHub.addRegistryShutdownListener(socketSimulator)
+    return socketSimulator
   }
 }

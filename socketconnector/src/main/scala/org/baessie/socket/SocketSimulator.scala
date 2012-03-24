@@ -1,8 +1,7 @@
 package org.baessie.socket
 
 import java.lang.Thread
-import org.apache.tapestry5.ioc.services.{RegistryShutdownHub, RegistryShutdownListener}
-import org.apache.tapestry5.ioc.annotations.PostInjection
+import org.apache.tapestry5.ioc.services.RegistryShutdownListener
 import java.net.{Socket, SocketTimeoutException, ServerSocket}
 import java.io.IOException
 
@@ -39,11 +38,6 @@ class SocketSimulator(val dispatcher: SocketDispatcher, val port: Int = 12345) e
     while (stillRunning) {
       Thread.sleep(200)
     }
-  }
-
-  @PostInjection
-  def startupService(shutdownHub: RegistryShutdownHub) {
-    shutdownHub.addRegistryShutdownListener(this)
   }
 
   def registryDidShutdown() {

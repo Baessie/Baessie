@@ -91,6 +91,7 @@ object BaessieBuild extends Build {
     homepage := Some(new URL("http://baessie.org")),
     startYear := Some(2011),
     licenses := Seq(("Simplified BSD License", new URL("http://github.com/Baessie/Baessie/raw/HEAD/LICENSE.txt"))),
+    pomIncludeRepository := { x => false },
     pomExtra <<= (pomExtra, name, description) {
       (pom, name, desc) => pom ++ Group(
         <scm>
