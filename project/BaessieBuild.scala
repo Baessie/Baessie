@@ -61,6 +61,14 @@ object BaessieBuild extends Build {
     ) ++ Seq(exportJars := true) ++ Seq(packageOptions := Seq(ManifestAttributes(("Tapestry-Module-Classes", "org.baessie.socket.services.SocketModule"))))
   ) dependsOn(common, testtools % "test")
 
+  lazy val simulatorjava = Project(
+    id = "simulatorjava",
+    base = file("simulator-java"),
+    settings = Defaults.defaultSettings ++ defaultSettings ++ settings ++ webSettings ++ Seq(
+      libraryDependencies ++= Dependencies.testkit ++ Seq(Dependency.commonsLang)
+    ) ++ Seq(exportJars := true)
+  )
+
   lazy val jdbcdrivers = Project(
     id = "jdbcdrivers",
     base = file("simulator-jdbc-driver"),

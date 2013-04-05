@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.baessie</groupId>
+	<artifactId>simulator-java</artifactId>
+	<version>0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
+	<name>Baessie Simulator Java</name>
+	<organization>
+		<name>Baessie</name>
+		<url>http://github.com/Baessie</url>
+	</organization>
+	<inceptionYear>2011</inceptionYear>
+	<licenses>
+		<license>
+			<name>Simplified BSD License</name>
+			<url>http://github.com/Baessie/Baessie/raw/HEAD/LICENSE.txt</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+	<developers>
+		<developer>
+			<id>argoyle</id>
+			<name>Joakim Olsson</name>
+			<email>joakim@unbound.se</email>
+			<url>https://github.com/argoyle</url>
+		</developer>
+		<developer>
+			<id>jotu</id>
+			<name>Joacim Turesson</name>
+			<email>joacim.turesson@autenta.se</email>
+			<url>https://github.com/jotu</url>
+		</developer>
+		<developer>
+			<id>pliljenberg</id>
+			<name>Peter Liljenberg</name>
+			<email>pliljenberg@gmail.com</email>
+			<url>https://github.com/pliljenberg</url>
+		</developer>
+	</developers>
+	<scm>
+		<connection>scm:git:git://github.com/Baessie/Baessie.git</connection>
+		<url>http://github.com/Baessie/Baessie</url>
+	</scm>
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+					<showWarnings>true</showWarnings>
+					<showDeprecation>true</showDeprecation>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	<dependencies>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.8.2</version>
+			<type>jar</type>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.6.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>jcl-over-slf4j</artifactId>
+			<version>1.6.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>log4j-over-slf4j</artifactId>
+			<version>1.6.1</version>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>0.9.24</version>
+		</dependency>
+		<dependency>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
+			<version>1.6.2</version>
+		</dependency>
+		<dependency>
+			<groupId>xmlunit</groupId>
+			<artifactId>xmlunit</artifactId>
+			<version>1.3</version>
+		</dependency>
+	</dependencies>
+	<repositories>
+		<repository>
+			<id>Maven repository</id>
+			<url>http://repo1.maven.org/maven2/</url>
+		</repository>
+		<repository>
+			<id>java.net</id>
+			<url>https://maven.java.net/content/repositories/public/</url>
+		</repository>
+		<repository>
+			<id>JBoss repository</id>
+			<url>http://repository.jboss.org/nexus/content/groups/public/</url>
+		</repository>
+	</repositories>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>Maven repository</id>
+			<url>http://repo1.maven.org/maven2/</url>
+		</pluginRepository>
+	</pluginRepositories>
+</project>
